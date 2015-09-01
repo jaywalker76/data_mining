@@ -17,7 +17,7 @@ setList <- list(s1,s2,s3,s4)
 
 # matrix representation of sets
 setsToMatrix <- function(setList){
-  main_set <- unique(unlist(setList))
+  main_set <- sort(unique(unlist(setList)))
   out <- matrix(data = main_set)
   for (item in setList){
     column <- as.numeric(main_set %in% item)
@@ -74,20 +74,34 @@ fig_3.2 <- setsToMatrix(setList)
 colnames(fig_3.2) <- c("row", "s1", "s2", "s3","s4")
 
 computeSigs <- function(h1, h2, fig_3.2){
-  ## signature matrix computation 
+  ## signature matrix computation (not automated)
 
   # initially, the matrix consists of all infinities
-  m <- matrix(nrow=2,ncol=4, value=Inf)
+  m <- matrix(data=Inf, nrow=2,ncol=5)
+  colnames(m) <- c("hash","s1","s2","s3","s4")
   
   # first, we consider row 0 of figure 3.4
-  # find the 1's in row 0
-  m[1, ] <- ifelse(fig_3.2[1, ] == 1,h1(0),Inf)
-  m[2, ] <- ifelse(fig_3.2[1, ] == 1,h2(0),Inf)
+  # find the 1's in row 0 
+  m[1,2] <- h1(0)
+  m[1,5] <- h1(0)
+  m[2,2] <- h2(0)
+  m[2,5] <- h2(0)
 
   # now, we move to the row numbered 1 in Fig. 3.4 This row has 1 only
   # in s3, and its hash values are h1(1) = 2 and h2(1) = 4.
-  
+  m[1,4] <- h1(1)
+  m[2,4] <- h2(1)
+
+  # the row of Fig 3.4 numbered 2 has 1's in the columns for s2 and s4,
+  # and its hash values are h1(2) = 3 and h2(2) = 2. We could change the
+  # the values in the signature for s4, but the values in this column of
+  # the signature matrix, [1,2], are each less than the corresponding
+  # hash values [3,2].
   
 
+  # less than
+  if (m[3, 4] < h1(2) && m[3, 4] < h2(2)){
+    # change it ?  
+  }
   
 }
