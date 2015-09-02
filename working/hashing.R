@@ -1,5 +1,7 @@
 ## Hash functions associated with Ch. 3 (finding similar items)
 
+source("similarity.R")
+
 # Figure 3.2: A matrix representing four sets
 s1 <- unique(c("a","d"))
 s2 <- unique(c("c"))
@@ -34,8 +36,6 @@ setsToMatrix <- function(setList){
 #
 # (a) Compute the Jaccard similarity of each of the pairs of columns
 #     in Fig. 3.2.
-
-source("similarity.R")
 
 sims <- c(
   jaccard(s1, s2),
@@ -148,6 +148,13 @@ computeDemoMinhashSigs <- function(h1, h2, fig_3.2){
   
 }
 
+updateMinhashSig <- function(m, colbool, hash){
+  ## update minhash signature for TRUE in colbool
+  
+
+
+}
+
 computeMinhashSigs <- function(hash, sets) {
   ## more general implmentation of minhash
 
@@ -166,13 +173,20 @@ computeMinhashSigs <- function(hash, sets) {
     row <- 0
     
     for (set in sets) {  # would be ideal
+
+      # check to see where it exists
+      colbool <- ifelse(main_set %in% set, 1,0)
+      
+      # update minhash signature where 1
+      
       hash(row)
       
+      row = row + 1
     }
   }
 
   # check to see where it exists
-  col <- ifelse(fig %in% s2, 1,0)
+  colbool <- ifelse(fig %in% s2, 1,0)
 
 }
 
