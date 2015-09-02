@@ -73,8 +73,9 @@ setList <- list(s1,s2,s3,s4)
 fig_3.2 <- setsToMatrix(setList)
 colnames(fig_3.2) <- c("row", "s1", "s2", "s3","s4")
 
-computeSigs <- function(h1, h2, fig_3.2){
+computeDemoMinhashSigs <- function(h1, h2, fig_3.2){
   ## signature matrix computation (not automated)
+  ## See Example 3.8
 
   # initially, the matrix consists of all infinities
   m <- matrix(data=Inf, nrow=2,ncol=5)
@@ -100,8 +101,56 @@ computeSigs <- function(h1, h2, fig_3.2){
   
 
   # less than
-  if (m[3, 4] < h1(2) && m[3, 4] < h2(2)){
-    # change it ?  
+  if (m[1, 5] > h1(2)){
+    m[1,5] <- h1(2)
+  }
+  if (m[2, 5] > h2(2)){
+    m[2, 5] <- h2(2)
+  }
+
+  # we know s2 should be changed
+  m[1,3] <- h1(2)
+  m[2,3] <- h2(2)
+
+  # next comes the row numbered 3 in Fig. 3.4. Here, all columns but s2
+  # have 1, and the hash balues are h1(3) = 4 and h2(3) = 0. The value
+  # 4 for h1 exceeds what is already in the signature matrix for all the
+  # columns, so we shall not change any values in the first row of the
+  # signature matrix. However, the value 0 for h2 is less than what is 
+  # already present, so we lower SIG(2,1), SIG(2,3) and SIG(2,4) to 0.
+  # Note that we cannot lower SIG(2,2) because the column for s2 in 
+  # Fig. 3.4 has 0 in the row we are currently considering.
+
+  # less than
+  if (m[2,2] > h2(3)){
+    m[2,2] <- h2(3)
+  }
+  if (m[2,4] > h2(3)){
+    m[2,4] <- h2(3)
+  }
+  if (m[2,5] > h2(3)){
+    m[2,5] <- h2(3)
+  }
+
+  # finally, consider the row of Fig. 3.4 numbered 4. h1(4) = 0 and 
+  # h2(4) = 3. Since row 4 has 1 only in the column for s3, we only 
+  # compare the current signature column for that set, [2,0] with the 
+  # hash values [0,3]. Since 0 < 2, we change SIG(1,3) to 0, but since
+  # 3 > 0 we do not change SIG(2,3). The final signature matrix is:
+  if (m[1,4] > h1(4)) {
+    m[1,4] <- h1(4)
+  }
+  if (m[2,4] > h2(4)) {
+    m[2,4] <- h2(4) 
   }
   
+  return(m)
+  
 }
+
+computeMinhashSigs <- function(hash, m) {
+  # more general implmentation of minhash
+
+}
+
+
