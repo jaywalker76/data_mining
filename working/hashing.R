@@ -148,10 +148,18 @@ computeDemoMinhashSigs <- function(h1, h2, fig_3.2){
   
 }
 
-updateMinhashSig <- function(m, colbool, hash){
-  ## update minhash signature for TRUE in colbool
-  
+updateMinhashSig <- function(m, colint, hash, rrow, jrow){
+  ## update minhash signature for TRUE in colint
 
+  # where should m be updated?
+  # is the hash less than infinity?
+  # is the hash less than the previous hash?
+
+  if (TRUE %in% (m[rrow,] * colint > h1(jrow))){
+    m[rrow, ][m[rrow,] * colint > h1(jrow)] <- h1(jrow)
+    return(m)
+  }
+  else { return(m) }
 
 }
 
@@ -170,26 +178,27 @@ computeMinhashSigs <- function(hash, sets) {
 
   
   for (hash in hashes) { # converting this to matrix multiplication
-    row <- 0
+    jrow <- 0
+    rrow <- 1
     
     for (set in sets) {  # would be ideal
 
       # check to see where it exists
-      colbool <- ifelse(main_set %in% set, 1,0)
+      colint <- ifelse(main_set %in% set, 1,0)
       
       # update minhash signature where 1
       
-      hash(row)
+      m <- updateMinhashSig(m, colint, hash, rrow, jrow)
       
-      row = row + 1
+      jrow = jrow + 1
+      rrow = rrow + 1
     }
   }
 
-  # check to see where it exists
-  colbool <- ifelse(fig %in% s2, 1,0)
-
 }
 
+
+# scratch work
 fig <- c(1,2,3,4,5)
 s1 <- c(1,2,3)
 s2 <- c(4,5,6,7)
