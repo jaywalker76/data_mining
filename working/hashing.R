@@ -155,8 +155,8 @@ updateMinhashSig <- function(m, colint, hash, rrow, jrow){
   # is the hash less than infinity?
   # is the hash less than the previous hash?
 
-  if (TRUE %in% (m[rrow,] * colint > h1(jrow))){
-    m[rrow, ][m[rrow,] * colint > h1(jrow)] <- h1(jrow)
+  if (TRUE %in% (m[rrow,] * colint > hash(jrow))){
+    m[rrow, ][m[rrow,] * colint > hash(jrow)] <- hash(jrow)
     return(m)
   }
   else { return(m) }
