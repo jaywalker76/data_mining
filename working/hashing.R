@@ -148,9 +148,39 @@ computeDemoMinhashSigs <- function(h1, h2, fig_3.2){
   
 }
 
-computeMinhashSigs <- function(hash, m) {
-  # more general implmentation of minhash
+computeMinhashSigs <- function(hash, sets) {
+  ## more general implmentation of minhash
+
+  # set of all shingles
+  main_set <- sort(unique(unlist(sets)))
+
+  # matrix to be populated with minhash signatures
+  m <- matrix(data=Inf, nrow=length(hash),
+              ncol=length(main_set))
+
+  # loop through all sets and hash functions
+  hashes <- unlist(hash)
+
+  
+  for (hash in hashes) { # converting this to matrix multiplication
+    row <- 0
+    
+    for (set in sets) {  # would be ideal
+      hash(row)
+      
+    }
+  }
+
+  # check to see where it exists
+  col <- ifelse(fig %in% s2, 1,0)
 
 }
+
+fig <- c(1,2,3,4,5)
+s1 <- c(1,2,3)
+s2 <- c(4,5,6,7)
+s3 <- c(4,5,2,3)
+
+
 
 
