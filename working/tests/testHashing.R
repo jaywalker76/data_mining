@@ -56,6 +56,16 @@ hash <- h1; rrow <- 1; jrow <- 0
 
 test_that("Minhash signature is correctly updated", {
   demo <- updateMinhashSig(m,colint,hash,rrow,jrow)
+  
+  # updates when was Inf
   expect_true(demo[1,4] == 1)
   expect_true(demo[1,5] == 1)
+  
+  # updates when hash < previous hash
+  jrow <- 4
+  demo <- updateMinhashSig(demo,colint,hash,rrow,jrow)
+
+  expect_true(demo[1,4] == 0)
+  expect_true(demo[1,5] == 0)
+  
 })

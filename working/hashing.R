@@ -154,32 +154,38 @@ updateMinhashSig <- function(m, colint, hash, rrow, jrow){
   # where should m be updated?
   # is the hash less than infinity?
   # is the hash less than the previous hash?
-
-  if (TRUE %in% (m[rrow,] * colint > hash(jrow))){
-    m[rrow, ][m[rrow,] * colint > hash(jrow)] <- hash(jrow)
+  print("rrow: ")
+  print(rrow)
+  
+  mmultiply <- m[rrow,] * colint > hash(jrow)
+  
+  
+  if (TRUE %in% (mmultiply)){
+    m[rrow,][mmultiply] <- hash(jrow)
     return(m)
   }
   else { return(m) }
 
 }
 
-computeMinhashSigs <- function(hash, sets) {
+computeMinhashSigs <- function(hashlist, setlist) {
   ## more general implmentation of minhash
 
   # set of all shingles
-  main_set <- sort(unique(unlist(sets)))
+  main_set <- sort(unique(unlist(setlist)))
 
   # matrix to be populated with minhash signatures
   m <- matrix(data=Inf, nrow=length(hash),
               ncol=length(main_set))
 
   # loop through all sets and hash functions
-  hashes <- unlist(hash)
+  #hashes <- unlist(hashlist)
 
-  
-  for (hash in hashes) { # converting this to matrix multiplication
+  rrow <- 1
+  for (hash in hashlist) { # converting this to matrix multiplication
     jrow <- 0
-    rrow <- 1
+    
+    print(hash)
     
     for (set in sets) {  # would be ideal
 
@@ -191,19 +197,15 @@ computeMinhashSigs <- function(hash, sets) {
       m <- updateMinhashSig(m, colint, hash, rrow, jrow)
       
       jrow = jrow + 1
-      rrow = rrow + 1
     }
+    rrow = rrow + 1
   }
-
+  return(m)
 }
 
-
-# scratch work
-fig <- c(1,2,3,4,5)
-s1 <- c(1,2,3)
-s2 <- c(4,5,6,7)
-s3 <- c(4,5,2,3)
-
+# scratch
+hashlist <- list(h1,h2)
+setlist <- list(s1,s2,s3,s4)
 
 
 
