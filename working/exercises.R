@@ -21,6 +21,14 @@ sims <- c(
   jaccard(s2, s4),
   jaccard(s3, s4))
 
+# (b) Compute, for each pair of the columns of that figure, the fraction
+#     of the 120 permutations of the rows that make the two columsn hash 
+#     to the same value.
+
+
+
+
+
 ## Exercise 3.3.2 
 # 
 # Using the data from Fig. 3.4, add to the signatures of the columns
