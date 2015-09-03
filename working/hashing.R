@@ -154,12 +154,9 @@ updateMinhashSig <- function(m, colint, hash, rrow, jrow){
   # where should m be updated?
   # is the hash less than infinity?
   # is the hash less than the previous hash?
-  print("rrow: ")
-  print(rrow)
-  
+
   mmultiply <- m[rrow,] * colint > hash(jrow)
-  
-  
+    
   if (TRUE %in% (mmultiply)){
     m[rrow,][mmultiply] <- hash(jrow)
     return(m)
@@ -175,8 +172,8 @@ computeMinhashSigs <- function(hashlist, setlist) {
   main_set <- sort(unique(unlist(setlist)))
 
   # matrix to be populated with minhash signatures
-  m <- matrix(data=Inf, nrow=length(hash),
-              ncol=length(main_set))
+  m <- matrix(data=Inf, nrow=length(hashlist),
+              ncol=length(setlist))
 
   # loop through all sets and hash functions
   #hashes <- unlist(hashlist)
@@ -190,13 +187,14 @@ computeMinhashSigs <- function(hashlist, setlist) {
     for (set in sets) {  # would be ideal
 
       # check to see where it exists
-      colint <- ifelse(main_set %in% set, 1,0)
+      sm <- setsToMatrix(setlist)
+      colint <- sm[1,2:length(sm[1,])] # each row must be checked
       
       # update minhash signature where 1
       
       m <- updateMinhashSig(m, colint, hash, rrow, jrow)
       
-      jrow = jrow + 1
+      jrow = jrow + 1 # this is probably an issue
     }
     rrow = rrow + 1
   }
