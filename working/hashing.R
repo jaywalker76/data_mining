@@ -148,17 +148,17 @@ computeDemoMinhashSigs <- function(h1, h2, fig_3.2){
   
 }
 
-updateMinhashSig <- function(m, colint, hash, rrow, jrow){
+updateMinhashSig <- function(m, colint, hash, hrow, jrow){
   ## update minhash signature for TRUE in colint
 
   # where should m be updated?
   # is the hash less than infinity?
   # is the hash less than the previous hash?
 
-  mmultiply <- m[rrow,] * colint > hash(jrow)
+  mmultiply <- m[hrow,] * colint > hash(jrow)
     
   if (TRUE %in% (mmultiply)){
-    m[rrow,][mmultiply] <- hash(jrow)
+    m[hrow,][mmultiply] <- hash(jrow)
     return(m)
   }
   else { return(m) }
@@ -178,25 +178,26 @@ computeMinhashSigs <- function(hashlist, setlist) {
   # loop through all sets and hash functions
   #hashes <- unlist(hashlist)
 
-  rrow <- 1
+  hrow <- 1
+  sm <- setsToMatrix(setlist)
+  
   for (hash in hashlist) { # converting this to matrix multiplication
     jrow <- 0
-    
-    print(hash)
-    
-    for (set in sets) {  # would be ideal
 
-      # check to see where it exists
-      sm <- setsToMatrix(setlist)
-      colint <- sm[1,2:length(sm[1,])] # each row must be checked
-      
+    for (row_num in 1:nrow(sm)) { # would be ideal
+
+      # check each row to see where it exists
+      colint <- sm[row_num, 2:length(sm[1,])]
+
       # update minhash signature where 1
-      
-      m <- updateMinhashSig(m, colint, hash, rrow, jrow)
-      
-      jrow = jrow + 1 # this is probably an issue
+      m <- updateMinhashSig(m, colint, hash, hrow, jrow)
+
+      # increment jrow for hash function output
+      jrow = jrow + 1
     }
-    rrow = rrow + 1
+
+    # increment hash row for signature table
+    hrow = hrow + 1
   }
   return(m)
 }

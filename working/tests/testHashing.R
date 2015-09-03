@@ -69,3 +69,25 @@ test_that("Minhash signature is correctly updated", {
   expect_true(demo[1,5] == 0)
   
 })
+
+## testing Minhash signature computation
+s1 <- c(0,3); s2 <- c(2); s3 <- c(1,3,4); s4 <- c(0,2,3)
+hashlist <- list(h1,h2); setlist <- list(s1,s2,s3,s4)
+
+test_that("Minhash signature is computed correctly", {
+  demo <- computeMinhashSigs(hashlist, setlist)
+
+  # Is output identical to Example 3.8 (p. 84)?
+
+  # h1
+  expect_true(demo[1,1] == 1)
+  expect_true(demo[1,2] == 3)
+  expect_true(demo[1,3] == 0)
+  expect_true(demo[1,4] == 1)
+
+  # h2
+  expect_true(demo[2,1] == 0)
+  expect_true(demo[2,2] == 2)
+  expect_true(demo[2,3] == 0)
+  expect_true(demo[2,4] == 0)
+})
