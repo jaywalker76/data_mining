@@ -150,6 +150,22 @@ computeMinhashSigs <- function(hashlist, setlist) {
   return(m)
 }
 
+hashPermuteBool <- function(hashlist) {
+  ## Which hash functions are true permutations ?
+  # 
+  # It appears as though a hash function which is not a true permutation
+  # will give us a bogus minhashing result.
+  #
+  # Given a hash function, prove through induction that it is a true
+  # or false permutation.
+  
+  
 
+
+
+  
+
+
+}
 
 

@@ -80,10 +80,59 @@ setlist <- list(s1,s2,s3,s4)
 solution_3.3.3 <- computeMinhashSigs(hashlist, setlist)
 
 
+# We can see here that minhash is not consistently finding similar sets.
+# It appears as though exploring other similarity measures besides the
+# Jaccard similarity of sets could be helpful. We can see from our 
+# comparison that the minhash technique appears to be introducing a 
+# majority of false positives.
+
+#
+# (b) Which of these hash functions are true permutations?
+# 
 
 
+# foo
+
+# 
+# (c) How close are the estimated Jaccard similarities for the six
+#     pairs of columns to the true Jaccard similarities?
 
 
+# these odd results appear to be related to the type of hash
+# function chosen rather than the implementation of the minhash
+# algorithm. It looks like great care is needed when choosing the
+# hashing algorithms.
+
+x_3.3.3 <- c(jaccard(s1,s2), jaccard(s1,s3), jaccard(s1,s4),
+             jaccard(s2,s3), jaccard(s2,s4), jaccard(s3,s4))
+
+y_3.3.3 <- c(jaccard(solution_3.3.3[,1],solution_3.3.3[,2]),
+             jaccard(solution_3.3.3[,1],solution_3.3.3[,3]),
+             jaccard(solution_3.3.3[,1],solution_3.3.3[,4]),
+             jaccard(solution_3.3.3[,2],solution_3.3.3[,3]),
+             jaccard(solution_3.3.3[,2],solution_3.3.3[,4]),
+             jaccard(solution_3.3.3[,3],solution_3.3.3[,4]))
+
+# comparing to 3.3.2 results
+s1 <- c(0,3); s2 <- c(2); s3 <- c(1,3,4); s4 <- c(0,2,3)
+
+x_3.3.2 <- c(jaccard(s1,s2), jaccard(s1,s3), jaccard(s1,s4),
+             jaccard(s2,s3), jaccard(s2,s4), jaccard(s3,s4))
+y_3.3.2 <- c(jaccard(solution_3.3.2[,1],solution_3.3.2[,2]),
+             jaccard(solution_3.3.2[,1],solution_3.3.2[,3]),
+             jaccard(solution_3.3.2[,1],solution_3.3.2[,4]),
+             jaccard(solution_3.3.2[,2],solution_3.3.2[,3]),
+             jaccard(solution_3.3.2[,2],solution_3.3.2[,4]),
+             jaccard(solution_3.3.2[,3],solution_3.3.2[,4]))
+
+
+## Plot the difference between 3.3.3 and 3.3.2 results
+  
+plot(x_3.3.3,y_3.3.3, xlab="Jaccard only",ylab="Jaccard minhash",
+     main="Jaccard similarity comparison with Minhashing")
+points(x_3.3.3,y_3.3.3,col=2,pch=3)
+points(x_3.3.2,y_3.3.2,col=4,pch=5)
+legend(14,70,c("Survived","Died"),col=c(1,2),pch=c(1,3))
 
 
 
