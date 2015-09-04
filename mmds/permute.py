@@ -15,4 +15,4 @@ def b(hash_funcs):
         print ','.join(res)
 
 
-b()
+b(hash_funcs)

@@ -150,7 +150,7 @@ computeMinhashSigs <- function(hashlist, setlist) {
   return(m)
 }
 
-hashPermuteBool <- function(hashlist) {
+hashPermuteInduc <- function(hashlist) {
   ## Which hash functions are true permutations ?
   # 
   # It appears as though a hash function which is not a true permutation
@@ -160,12 +160,33 @@ hashPermuteBool <- function(hashlist) {
   # or false permutation.
   
   
+}
 
+hashPermuteDirect <- function(hashlist, row_count) {
+  ## Which hash functions are true permutations?
+  #
+  # Given a hash function, prove through direct counting of choices
+  # that it is a true or false permutation.
+  #
+  # Row count starts at 0, must provide names with hashlist
 
+  m <- matrix(nrow=length(hashlist), ncol=2)
+  rrow <- 1
+  for (hf in hashlist) {
+    pervec <- c()
 
+    for (i in 0:row_count) {
+      pervec <- c(pervec, hf(i))
+    }
+    #print(pervec)
+
+    m[rrow, 1] <- names(hashlist)[rrow]
+    m[rrow, 2] <- length(unique(pervec))
+
+    rrow = rrow + 1
+  }
   
-
-
+  return(m)
 }
 
 

@@ -91,3 +91,29 @@ test_that("Minhash signature is computed correctly", {
   expect_true(demo[2,3] == 0)
   expect_true(demo[2,4] == 0)
 })
+
+## testing true permutations of hash functions can be proven by 
+## directly counting the permutations.
+
+h1 <- function(x) { (2*x + 1) %% 6 }
+h2 <- function(x) { (3*x + 2) %% 6 }
+h3 <- function(x) { (5*x + 2) %% 6 }
+s1 <- c(2,5); s2 <- c(0,1); s3 <- c(3,4); s4 <- c(0,2,4)
+
+hashlist <- list("h1"=h1,"h2"=h2,"h3"=h3)
+row_count <- 6
+
+
+test_that("Hash functions are true or false permutations with direct", {
+  demo <- hashPermuteDirect(hashlist, row_count)
+
+  # false
+  expect_false(demo[1,2] == "6") # h1
+  expect_false(demo[2,2] == "6") # h2
+  # true 
+  expect_true(demo[3,2] == "6") # h3
+  # check names for sanity
+  expect_true(demo[3,1] == "h3")
+})
+  
+
