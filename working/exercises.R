@@ -129,13 +129,19 @@ y_3.3.2 <- c(jaccard(solution_3.3.2[,1],solution_3.3.2[,2]),
 
 ## Plot the difference between 3.3.3 and 3.3.2 results
 
-png('minhash.png')
+#png('minhash.png')
 plot(x_3.3.2,y_3.3.2, xlab="Jaccard only",ylab="Jaccard minhash",
      main="Jaccard similarity comparison with Minhashing")
 #points(x_3.3.3,y_3.3.3,col=2,pch=3)
 points(x_3.3.2,y_3.3.2,col=4,pch=5)
-dev.off()
 
+# make this better. ggplot? might as well.
+ 
+#dev.off()
+
+values <- cbind(x_3.3.2,y_3.3.2)
+colnames(values) <- c("Jaccard", "Minhash")
+values
 
 ## It seems like the results are a little more off than we would 
 ## hope. Let's verify which hash functions are true permutations then
@@ -159,31 +165,10 @@ hashlist <- list("h1"=h1,"h2"=h2,"h3"=h3, "h4"=h4); row_count <- 4
 hashPermuteDirect(hashlist, row_count)
 
 
-
+# It looks like a different similarity algorithm may be helpful.
+# Also, 
 
 
 
 ## scratch 
 
-
-# Figure 3.2: A matrix representing four sets
-s1 <- unique(c("a","d"))
-s2 <- unique(c("c"))
-s3 <- unique(c("b","d","e"))
-s4 <- unique(c("a","c", "d"))
-
-setUnion <- union(s1,s2)
-setUnion <- union(setUnion, s3)
-setUnion <- union(setUnion, s4)
-
-setMatrix <- matrix(nrow=length(setUnion),ncol=4)
-
-matrixRes <- cbind(setUnion, setMatrix)
-setList <- list(s1,s2,s3,s4)
-
-# use a matrix as it looks in the book; figure 3.2
-setList <- list(s1,s2,s3,s4)
-fig_3.2 <- setsToMatrix(setList)
-colnames(fig_3.2) <- c("row", "s1", "s2", "s3","s4")
-
-# scratch
