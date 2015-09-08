@@ -89,9 +89,10 @@ solution_3.3.3 <- computeMinhashSigs(hashlist, setlist)
 #
 # (b) Which of these hash functions are true permutations?
 # 
+hashlist <- list("h1"=h1,"h2"=h2,"h3"=h3)
+row_count <- 5
 
-
-# foo
+hashPermuteDirect(hashlist, row_count)
 
 # 
 # (c) How close are the estimated Jaccard similarities for the six
@@ -103,15 +104,15 @@ solution_3.3.3 <- computeMinhashSigs(hashlist, setlist)
 # algorithm. It looks like great care is needed when choosing the
 # hashing algorithms.
 
-x_3.3.3 <- c(jaccard(s1,s2), jaccard(s1,s3), jaccard(s1,s4),
-             jaccard(s2,s3), jaccard(s2,s4), jaccard(s3,s4))
+#x_3.3.3 <- c(jaccard(s1,s2), jaccard(s1,s3), jaccard(s1,s4),
+#             jaccard(s2,s3), jaccard(s2,s4), jaccard(s3,s4))
 
-y_3.3.3 <- c(jaccard(solution_3.3.3[,1],solution_3.3.3[,2]),
-             jaccard(solution_3.3.3[,1],solution_3.3.3[,3]),
-             jaccard(solution_3.3.3[,1],solution_3.3.3[,4]),
-             jaccard(solution_3.3.3[,2],solution_3.3.3[,3]),
-             jaccard(solution_3.3.3[,2],solution_3.3.3[,4]),
-             jaccard(solution_3.3.3[,3],solution_3.3.3[,4]))
+#y_3.3.3 <- c(jaccard(solution_3.3.3[,1],solution_3.3.3[,2]),
+#             jaccard(solution_3.3.3[,1],solution_3.3.3[,3]),
+#             jaccard(solution_3.3.3[,1],solution_3.3.3[,4]),
+#             jaccard(solution_3.3.3[,2],solution_3.3.3[,3]),
+#             jaccard(solution_3.3.3[,2],solution_3.3.3[,4]),
+#             jaccard(solution_3.3.3[,3],solution_3.3.3[,4]))
 
 # comparing to 3.3.2 results
 s1 <- c(0,3); s2 <- c(2); s3 <- c(1,3,4); s4 <- c(0,2,3)
@@ -127,22 +128,35 @@ y_3.3.2 <- c(jaccard(solution_3.3.2[,1],solution_3.3.2[,2]),
 
 
 ## Plot the difference between 3.3.3 and 3.3.2 results
-  
-plot(x_3.3.3,y_3.3.3, xlab="Jaccard only",ylab="Jaccard minhash",
+
+png('minhash.png')
+plot(x_3.3.2,y_3.3.2, xlab="Jaccard only",ylab="Jaccard minhash",
      main="Jaccard similarity comparison with Minhashing")
-points(x_3.3.3,y_3.3.3,col=2,pch=3)
+#points(x_3.3.3,y_3.3.3,col=2,pch=3)
 points(x_3.3.2,y_3.3.2,col=4,pch=5)
-legend(14,70,c("Survived","Died"),col=c(1,2),pch=c(1,3))
+dev.off()
 
 
+## It seems like the results are a little more off than we would 
+## hope. Let's verify which hash functions are true permutations then
+## add them to the plot
 
+h1 <- function(x) { (2*x + 1) %% 6 }
+h2 <- function(x) { (3*x + 2) %% 6 }
+h3 <- function(x) { (5*x + 2) %% 6 }
 
+hashlist <- list("h1"=h1,"h2"=h2,"h3"=h3); row_count <- 5
+hashPermuteDirect(hashlist, row_count)
 
+# hash functions from example
+h1 <- function(x) { (x + 1) %% 5 }
+h2 <- function(x) { (3*x + 1) %% 5 }
+# hash functions from exercise 3.3.2
+h3 <- function(x) { (2*x + 4) %% 5 }
+h4 <- function(x) { (3*x - 1) %% 5 }
 
-
-
-
-
+hashlist <- list("h1"=h1,"h2"=h2,"h3"=h3, "h4"=h4); row_count <- 4
+hashPermuteDirect(hashlist, row_count)
 
 
 
