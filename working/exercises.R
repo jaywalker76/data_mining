@@ -2,6 +2,7 @@
 
 source("similarity.R")
 source("hashing.R")
+source("plotting.R")
 
 
 ## Exercise 3.3.1
@@ -166,9 +167,45 @@ hashPermuteDirect(hashlist, row_count)
 
 
 # It looks like a different similarity algorithm may be helpful.
-# Also, 
+# The main issue right now is that minhash seems to struggle when
+# the size of the set is small. Minhash was originally designed to 
+# deduplicate web pages; shingles comprising a considerably larger
+# set than something like company names. Minhash compresses large 
+# documents into smaller signatures.
+
+# How do you use a signature with a length of 250?
+
+## Example 3.11
+
+s <- c(0.2,0.3,0.4,0.5,0.6,0.7,0.8)
+m <- matrix(data=Inf, nrow=length(s), ncol=2)
+m[,1] <- s
+prob <- c()
+for (sProb in s) {
+  prob <- c(prob, candidatePair(sProb, 5, 20))
+}
+m[,2] <- prob
+colnames(m) <- c("s", "probCandPair")
+
+## Figure 3.7: The S-curve
+figure_3.7(m[,1],m[,2])
+
+
+## Exercise 3.4.1
+#  
+#  Evaluate the S-curve 1-(1-s^r)^b for s=0.1,0.2,...,0.9, for
+#  the following values of r and b:
+#  
+#  r = 3 and b = 10.
+#  r = 6 and b = 20.
+#  r = 5 and b = 50.
+
+s <- c(0.2,0.3,0.4,0.5,0.6,0.7,0.8)
+rlist <- list("r5b20"=5,"r3b10"=3,"r6b20"=6,"r5b50"=5)
+blist <- list(20,10,20,50)
+
+probs(s,rlist,blist)
 
 
 
-## scratch 
 

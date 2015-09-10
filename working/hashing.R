@@ -189,4 +189,58 @@ hashPermuteDirect <- function(hashlist, row_count) {
   return(m)
 }
 
+## 3.4.2 Analysis of the Banding Technique
+# 
+# We can calculate the probability that these documents (or rather
+# their signatures) become a candidate pair as follows:
+
+# 1. The probability that the signatures agree in all rows of one 
+#    particular band is s^r
+allRows <- function(s,r) { s^r }
+
+# 2. The probability that the signatures disagree in at least one row
+#    of a particular band is 1 - s^r.
+OneRowSpecBand <- function(s,r) { 1 - s^r }
+
+# 3. The probability that the signatures disagree in at least one row
+#    of each of the bands is (1 -s^r)^b.
+OneRowManyBands <- function(s,r,b) { (1 - s^r)^b }
+
+# 4. The probability that the signatures agree in all the rows of at 
+#    least one band, and therefore become a candidate pair, 
+#    is 1-(1-s^r)^b.
+candidatePair <- function(s,r,b) { 1 - (1 - s^r)^b }
+
+
+# function for computing probabilties
+
+updateProbs <- function(s,r,b) {
+  prob <- c()
+  for (sProb in s) {
+    prob <- c(prob, candidatePair(sProb, r, b))
+  }
+  return(prob)
+}
+
+probs <- function(s, rlist, blist) {
+  m <- matrix(data=Inf, nrow=length(s), ncol=(length(rlist) + 1))
+  m[,1] <- s
+
+  mcol <- 2  
+  count = 1
+  while (count <= length(rlist)) {
+
+    m[,mcol] <- updateProbs(s, rlist[[count]], blist[[count]])
+    count = count + 1
+    mcol = mcol + 1
+
+  }
+
+  colnames(m) <- append("s",names(rlist))
+  return(m)
+}
+
+
+
+
 
