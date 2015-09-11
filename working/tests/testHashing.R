@@ -1,7 +1,7 @@
 setwd("..")
 source("hashing.R")
 
-context("Hashing algorithms")
+context("Minhash Algorithm")
 
 test_that("hash functions return correct values", {
   expect_that(h1(0), equals(1))
@@ -117,3 +117,23 @@ test_that("Hash functions are true or false permutations with direct", {
 })
   
 
+context("LSH Algorithm")
+
+test_that("Candidate pair probabilities are correct", {
+  expect_equal(round(candidatePair(s=0.2,r=5,b=20),3),0.006)
+  expect_equal(round(candidatePair(s=0.3,r=5,b=20),3),0.047)
+  expect_equal(round(candidatePair(s=0.4,r=5,b=20),3),0.186)
+})
+
+
+test_that("Candidate pair probabilities are updated correctly", {
+  s <- c(0.2,0.3,0.4); r <- 5; b <- 20
+  expect_equal(round(updateProbs(s,r,b),3), c(0.006,0.047,0.186))
+})
+
+test_that("Candidate pair probabilities calculated as matrix", {
+  s <- c(0.2,0.3,0.4); rlist <- list("r5b20"=5,"r3b10"=3,"r6b20"=6)
+  blist <- list(20,10,20)
+  expect_equal(round(probs(s,rlist,blist)[,2],3),
+               c(0.006,0.047,0.186))
+})

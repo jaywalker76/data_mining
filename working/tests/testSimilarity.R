@@ -1,7 +1,7 @@
 setwd("..")
 source("similarity.R")
 
-context("Similarity algorithms")
+context("Jaccard Similarity Algorithm")
 
 s1 <- c(1,2,3)
 s2 <- c(3,4,5)
