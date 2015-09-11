@@ -1,5 +1,7 @@
 ## Exercises for Ch. 3
 
+library(ggplot2)
+
 source("similarity.R")
 source("hashing.R")
 source("plotting.R")
@@ -204,7 +206,9 @@ s <- c(0.2,0.3,0.4,0.5,0.6,0.7,0.8)
 rlist <- list("r5b20"=5,"r3b10"=3,"r6b20"=6,"r5b50"=5)
 blist <- list(20,10,20,50)
 
-probs(s,rlist,blist)
+plt <- exercise_3.4.1(probs(s,rlist,blist))
+
+ggsave(filename= "banding.pdf", plot=plt)
 
 
 
