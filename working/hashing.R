@@ -237,7 +237,7 @@ probs <- function(s, rlist, blist) {
   }
 
   colnames(m) <- append("s",names(rlist))
-  return(m)
+  return(data.frame(m))
 }
 
 
