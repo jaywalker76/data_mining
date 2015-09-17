@@ -22,4 +22,15 @@ exercise_3.4.1 <- function(df) {
   return(plt)
 }
 
+exercise_3.4.2 <- function(disagree) {
+  plt <- ggplot() +
+    geom_line(data=disagree, aes(x=disagree[,1],
+                y=disagree[,2])) +
+    geom_point() +
+    labs(x= "Probability of becoming a candidate pair",
+         y="Prob that signatures disagree >= one row of each of band",
+         title="Threshold is 1/2; Analysis of the Banding Technique")
+  return(plt)
+}
+
 

@@ -208,8 +208,29 @@ blist <- list(20,10,20,50)
 
 plt <- exercise_3.4.1(probs(s,rlist,blist))
 
-ggsave(filename= "banding.pdf", plot=plt)
+#png("banding.png")
+#print(plt)
+#dev.off()
+
+## Exercise 3.4.2
+# 
+# For each of the (r,b) pairs in Exercise 3.4.1, compute the threshold,
+# that is, the value of s for which the value of 1-(1-s^r)^b is exactly
+# 1/2. How does this value compare with the estimate of (1/b)^1/r that 
+# was suggested in Section 3.4.2?
+
+s <- c(0.5)
+rlist <- list("r5b20"=5,"r3b10"=3,"r6b20"=6,"r5b50"=5)
+blist <- list(20,10,20,50)
+probs(s,rlist,blist)
+
+oprobs(s,rlist,blist)
 
 
+disagree <- data.frame(cbind(t(probs(s,rlist,blist)[2:5]),
+                             t(oprobs(s,rlist,blist)[2:5])))
 
+#png('exercise_342.png')
+#print(exercise_3.4.2(disagree))
+#dev.off()
 

@@ -222,7 +222,15 @@ updateProbs <- function(s,r,b) {
   return(prob)
 }
 
-probs <- function(s, rlist, blist) {
+oupdateProbs <- function(s,r,b) {
+  prob <- c()
+  for (sProb in s) {
+    prob <- c(prob, OneRowManyBands(sProb, r, b))
+  }
+  return(prob)
+}
+
+oprobs <- function(s, rlist, blist) {
   m <- matrix(data=Inf, nrow=length(s), ncol=(length(rlist) + 1))
   m[,1] <- s
 
@@ -230,7 +238,7 @@ probs <- function(s, rlist, blist) {
   count = 1
   while (count <= length(rlist)) {
 
-    m[,mcol] <- updateProbs(s, rlist[[count]], blist[[count]])
+    m[,mcol] <- oupdateProbs(s, rlist[[count]], blist[[count]])
     count = count + 1
     mcol = mcol + 1
 
@@ -239,7 +247,6 @@ probs <- function(s, rlist, blist) {
   colnames(m) <- append("s",names(rlist))
   return(data.frame(m))
 }
-
 
 
 
