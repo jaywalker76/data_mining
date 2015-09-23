@@ -236,6 +236,8 @@ disagree <- data.frame(cbind(t(probs(s,rlist,blist)[2:5]),
 #print(exercise_3.4.2(disagree))
 #dev.off()
 
+
+
 ## Exercise 3.5.7 Find the edit distances (using only insertions and
 #                 deletions) between the following pairs of strings.
 
