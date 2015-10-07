@@ -1,4 +1,4 @@
 *~
 *.pdf
 .Rhistory
-*target/*
+dedupe/target/*
