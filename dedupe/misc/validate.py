@@ -10,40 +10,76 @@ import argparse
 # script arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("csv", help="path to csv file")
+parser.add_argument("cols", help="Number of columns in csv file")
 args = parser.parse_args()
 
-# regex to find unbalanced quotes
-#pattern = """(?=\s)[^"]*(?<=\s+)")"""
+def read_csv():
+    with open(args.csv, 'r') as infile:
+        read_data = infile.read()
+        infile.close()
+
+    return read_data
 
 
-with open(args.csv, 'r') as infile:
-    read_data = infile.read()
-    infile.close()
 
-# validate quotes
-for item in read_data.split("\n"):
-    items = item.split(",")
-    
-    char = 0
-    startquote = False
-    endquote = False
-    while char < len(item):
-        if startquote == False and char == '"':
-            startquote = True
-            char += 1
 
-        elif startquote == True and char == '"':
-            endquote = True
-            char += 1
+# tests for data
 
-        else:
-            char += 1
+def validateQuotes(read_data):
+    """ Resolving CSV input error
 
-    if not endquote:
-        print("Unbalanced quote in CSV file: {}".format(item))
+    Exception in thread "main" 
+    no.priv.garshol.duke.DukeException: 
+    Unbalanced quote in CSV file
+
+    """
+    for row in read_data.split("\n"):
+
+        quote_count = 0
+        for character in row:
+            if character == '"':
+                quote_count += 1
+
+    if quote_count % int(args.cols) != 0:
+        print("Unbalanced quote in CSV file")
         raise(ValueError)
 
-print("Test complete")
+    else:
+        return True
+
+def validateNewline(read_data):
+    """ Check to see if correct number of
+    newline characters """
+    items = read_data.split(",")
+
+    newline_count = 0
+    for itemChar in items:
+        
+         itemNewLines = len([character for character in itemChar
+                         if character == "\n"])
+
+         newline_count += itemNewLines
+
+    if newline_count % int(args.cols) != 0:
+        print("Missing newline characters")
+        raise(ValueError)
+    else:
+        return True
+
+
+def main():
+    # setUp
+    read_data = read_csv()
+
+    # tests
+    assert validateQuotes(read_data)
+    assert validateNewline(read_data)
+
+
+    print("Test complete")
+
+if __name__ == "__main__":
+    main()
 
         
 
