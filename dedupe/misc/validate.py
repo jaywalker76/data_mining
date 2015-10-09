@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ Validate and fix data for csv files 
 
+Tyler Brown; @tbonza; 2015; Licensing: MIT
+
 1. There is an issue with unbalanced quotes in the example data. 
    Resolving it.
 
@@ -94,16 +96,18 @@ def validateNewline(read_data):
     else:
         return True
 
-##################################################################
-## Fixes for data
-##################################################################
-
 def itemLenSanity(item):
     """ Check for 0 len """
     if len(item) > 0:
         return True
     else:
         return False
+
+
+##################################################################
+## Fixes for data
+##################################################################
+
     
 def fixNewline(read_data):
     """ Missing newline characters were found in the csv file; fixing """
