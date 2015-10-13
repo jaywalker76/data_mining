@@ -12,18 +12,31 @@ Tyler Brown; @tbonza; 2015; Licensing: MIT
 """
 import argparse
 import csv
+import sys
+import logging
 
 # script arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("csv", help="path to csv file")
 parser.add_argument("cols", help="Number of columns in csv file")
+parser.add_argument("--log", help="Path of file for logging; string")
 args = parser.parse_args()
+
+# Global Variables
+RECURSION_LIMIT = 3
 
 ########################################################################
 ## Utils
 ########################################################################
 
+def log_it(path):
+    logging.basicConfig(filename=path, level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)s %(message)s')
+    
+    logging.debug('Logging for validate.py\n')
+
 def read_csv():
+    logging.info('Reading csv file')
     with open(args.csv, 'r') as infile:
         read_data = infile.read()
         infile.close()
@@ -31,6 +44,7 @@ def read_csv():
     return read_data
 
 def write_csv(write_data):
+    logging.info('Writing csv file')
     outfile = args.csv.split(".")
     _outfile = outfile[0] + "_valid."
     outfile = _outfile + outfile[1]
@@ -44,6 +58,7 @@ def write_csv(write_data):
                 csvwriter.writerow(line)
 
             outfile.close()
+            logging.info("Data written to csv file")
 
         return True
 
@@ -63,6 +78,7 @@ def validateQuotes(read_data):
     Unbalanced quote in CSV file
 
     """
+    logging.info('Validating quotes')
     for row in read_data.split("\n"):
 
         quote_count = 0
@@ -72,14 +88,17 @@ def validateQuotes(read_data):
 
     if quote_count % int(args.cols) != 0:
         print("Unbalanced quote in CSV file")
+        logging.warning("Unbalanced quotes in CSV file")
         return False
 
     else:
+        logging.info("Quotes validated successfully")
         return True
 
 def validateNewline(read_data):
     """ Check to see if correct number of
     newline characters """
+    logging.info("Validating new line characters")
     items = read_data.split(",")
 
     newline_count = 0
@@ -92,8 +111,10 @@ def validateNewline(read_data):
 
     if newline_count % int(args.cols) != 0:
         print("Missing newline characters")
+        logging.warning("Missing newline characters found in CSV file")
         return False
     else:
+        logging.info("Newline characters validated successfully")
         return True
 
 def itemLenSanity(item):
@@ -111,6 +132,7 @@ def itemLenSanity(item):
     
 def fixNewline(read_data):
     """ Missing newline characters were found in the csv file; fixing """
+    logging.info("Fixing newline characters")
     items = read_data.split(",")
     ncols = int(args.cols)
 
@@ -146,7 +168,15 @@ def fixNewline(read_data):
 
 def testerFixer(data):
     print("go go testerFixer")
+    logging.info("Implementing testerFixer")
     
+    global RECURSION_LIMIT
+    RECURSION_LIMIT -= 1
+    
+    if RECURSION_LIMIT == 0:
+        logging.error("Recursion limit reached")
+        sys.exit("Recursion limit reached")
+        
     if not validateQuotes(data):
         print('validateQuotes failed')
         
@@ -156,20 +186,28 @@ def testerFixer(data):
         testerFixer(data)
 
     if validateNewline(data) and validateQuotes(data):
+        logging.info("CSV file returned successfully")
         return data
 
 
 def main():
     # setUp
+    if args.log != None:
+        log_it(args.log)
+        logging.info("STARTED - validate.py")
+        logging.info("CSV file path: {}".format(args.csv))
+        logging.info("Number of cols: {}".format(args.cols))
+    
     read_data = read_csv()
 
     # test & fix
     write_data = testerFixer(read_data)
 
     # write to file
-    write_csv(write_data)
+    #write_csv(write_data)
 
     print("Test complete")
+    logging.info("COMPLETED - validate.py\n")
 
 if __name__ == "__main__":
     main()
