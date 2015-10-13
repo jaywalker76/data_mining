@@ -1,0 +1,291 @@
+2015-10-13 14:33:43,750 DEBUG Logging for validate.py
+
+2015-10-13 14:33:43,750 INFO STARTED - validate.py
+2015-10-13 14:33:43,750 INFO CSV file path: misc/example-data/countries-dbpedia.csv
+2015-10-13 14:33:43,750 INFO Number of cols: 4
+2015-10-13 14:33:43,751 INFO Reading csv file
+2015-10-13 14:33:43,751 INFO Implementing testerFixer
+2015-10-13 14:33:43,751 INFO Validating quotes
+2015-10-13 14:33:43,753 INFO Quotes validated successfully
+2015-10-13 14:33:43,754 INFO Validating new line characters
+2015-10-13 14:33:43,757 WARNING Missing newline characters found in CSV file
+2015-10-13 14:33:43,757 INFO Fixing newline characters
+2015-10-13 14:33:43,762 INFO Implementing testerFixer
+2015-10-13 14:33:43,762 INFO Validating quotes
+2015-10-13 14:33:43,769 INFO Quotes validated successfully
+2015-10-13 14:33:43,769 INFO Validating new line characters
+2015-10-13 14:33:43,775 INFO Newline characters validated successfully
+2015-10-13 14:33:43,775 INFO Validating new line characters
+2015-10-13 14:33:43,781 INFO Newline characters validated successfully
+2015-10-13 14:33:43,781 INFO Validating quotes
+2015-10-13 14:33:43,787 INFO Quotes validated successfully
+2015-10-13 14:33:43,787 INFO CSV file returned successfully
+2015-10-13 14:33:43,787 INFO Validating new line characters
+2015-10-13 14:33:43,793 INFO Newline characters validated successfully
+2015-10-13 14:33:43,793 INFO Validating quotes
+2015-10-13 14:33:43,798 INFO Quotes validated successfully
+2015-10-13 14:33:43,798 INFO CSV file returned successfully
+2015-10-13 14:33:43,798 INFO COMPLETED - validate.py
+
+2015-10-13 14:33:55,465 DEBUG Logging for validate.py
+
+2015-10-13 14:33:55,465 INFO STARTED - validate.py
+2015-10-13 14:33:55,465 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:33:55,466 INFO Number of cols: 4
+2015-10-13 14:33:55,466 INFO Reading csv file
+2015-10-13 14:33:55,466 INFO Implementing testerFixer
+2015-10-13 14:33:55,466 INFO Validating quotes
+2015-10-13 14:33:55,467 INFO Quotes validated successfully
+2015-10-13 14:33:55,467 INFO Validating new line characters
+2015-10-13 14:33:55,469 WARNING Missing newline characters found in CSV file
+2015-10-13 14:33:55,469 INFO Fixing newline characters
+2015-10-13 14:33:55,473 INFO Implementing testerFixer
+2015-10-13 14:33:55,473 INFO Validating quotes
+2015-10-13 14:33:55,476 INFO Quotes validated successfully
+2015-10-13 14:33:55,476 INFO Validating new line characters
+2015-10-13 14:33:55,481 WARNING Missing newline characters found in CSV file
+2015-10-13 14:33:55,481 INFO Fixing newline characters
+2015-10-13 14:33:55,491 INFO Implementing testerFixer
+2015-10-13 14:33:55,491 ERROR Recursion limit reached
+2015-10-13 14:49:11,418 DEBUG Logging for validate.py
+
+2015-10-13 14:49:11,418 INFO STARTED - validate.py
+2015-10-13 14:49:11,418 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:49:11,418 INFO Number of cols: 4
+2015-10-13 14:49:11,418 INFO Reading csv file
+2015-10-13 14:49:11,418 INFO Implementing testerFixer
+2015-10-13 14:49:11,418 INFO Validating quotes
+2015-10-13 14:49:11,420 INFO Quotes validated successfully
+2015-10-13 14:49:11,420 INFO Validating new line characters
+2015-10-13 14:49:11,421 WARNING Missing newline characters found in CSV file
+2015-10-13 14:49:11,421 INFO Fixing newline characters
+2015-10-13 14:49:11,425 INFO Implementing testerFixer
+2015-10-13 14:49:11,425 INFO Validating quotes
+2015-10-13 14:49:11,429 INFO Quotes validated successfully
+2015-10-13 14:49:11,429 INFO Validating new line characters
+2015-10-13 14:49:11,433 WARNING Missing newline characters found in CSV file
+2015-10-13 14:49:11,433 INFO Fixing newline characters
+2015-10-13 14:49:11,442 INFO Implementing testerFixer
+2015-10-13 14:49:11,442 ERROR Recursion limit reached
+2015-10-13 14:49:43,716 DEBUG Logging for validate.py
+
+2015-10-13 14:49:43,717 INFO STARTED - validate.py
+2015-10-13 14:49:43,717 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:49:43,717 INFO Number of cols: 4
+2015-10-13 14:49:43,717 INFO Reading csv file
+2015-10-13 14:49:43,717 INFO Implementing testerFixer
+2015-10-13 14:49:43,717 INFO Validating quotes
+2015-10-13 14:49:43,718 INFO Quotes validated successfully
+2015-10-13 14:49:55,685 DEBUG Logging for validate.py
+
+2015-10-13 14:49:55,685 INFO STARTED - validate.py
+2015-10-13 14:49:55,685 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:49:55,686 INFO Number of cols: 4
+2015-10-13 14:49:55,686 INFO Reading csv file
+2015-10-13 14:49:55,686 INFO Implementing testerFixer
+2015-10-13 14:49:55,686 INFO Validating quotes
+2015-10-13 14:49:55,687 INFO Quotes validated successfully
+2015-10-13 14:51:12,511 DEBUG Logging for validate.py
+
+2015-10-13 14:51:12,511 INFO STARTED - validate.py
+2015-10-13 14:51:12,511 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:51:12,511 INFO Number of cols: 4
+2015-10-13 14:51:12,511 INFO Reading csv file
+2015-10-13 14:51:12,511 INFO Implementing testerFixer
+2015-10-13 14:51:12,512 INFO Validating quotes
+2015-10-13 14:51:12,513 INFO Quotes validated successfully
+2015-10-13 14:51:32,080 DEBUG Logging for validate.py
+
+2015-10-13 14:51:32,080 INFO STARTED - validate.py
+2015-10-13 14:51:32,080 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:51:32,080 INFO Number of cols: 4
+2015-10-13 14:51:32,080 INFO Reading csv file
+2015-10-13 14:51:32,080 INFO Implementing testerFixer
+2015-10-13 14:51:32,080 INFO Validating quotes
+2015-10-13 14:51:32,081 INFO Quotes validated successfully
+2015-10-13 14:51:32,085 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:51:32,085 INFO Validating new line characters
+2015-10-13 14:51:32,086 WARNING Missing newline characters found in CSV file
+2015-10-13 14:51:32,086 INFO Fixing newline characters
+2015-10-13 14:51:32,088 INFO Implementing testerFixer
+2015-10-13 14:51:32,088 INFO Validating quotes
+2015-10-13 14:51:32,090 INFO Quotes validated successfully
+2015-10-13 14:51:32,102 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:51:32,102 INFO Validating new line characters
+2015-10-13 14:51:32,105 WARNING Missing newline characters found in CSV file
+2015-10-13 14:51:32,106 INFO Fixing newline characters
+2015-10-13 14:51:32,111 INFO Implementing testerFixer
+2015-10-13 14:51:32,111 ERROR Recursion limit reached
+2015-10-13 14:53:39,790 DEBUG Logging for validate.py
+
+2015-10-13 14:53:39,790 INFO STARTED - validate.py
+2015-10-13 14:53:39,790 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:53:39,790 INFO Number of cols: 4
+2015-10-13 14:53:39,790 INFO Reading csv file
+2015-10-13 14:53:39,791 INFO Implementing testerFixer
+2015-10-13 14:53:39,791 INFO Validating quotes
+2015-10-13 14:53:39,792 INFO PASSED - Quotes validated successfully
+2015-10-13 14:53:39,797 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:53:39,797 INFO Validating new line characters
+2015-10-13 14:53:39,799 WARNING FAILED - Missing newline characters in CSV file
+2015-10-13 14:53:39,799 INFO Fixing newline characters
+2015-10-13 14:53:39,802 INFO Implementing testerFixer
+2015-10-13 14:53:39,802 INFO Validating quotes
+2015-10-13 14:53:39,806 INFO PASSED - Quotes validated successfully
+2015-10-13 14:53:39,824 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:53:39,825 INFO Validating new line characters
+2015-10-13 14:53:39,829 WARNING FAILED - Missing newline characters in CSV file
+2015-10-13 14:53:39,829 INFO Fixing newline characters
+2015-10-13 14:53:39,838 INFO Implementing testerFixer
+2015-10-13 14:53:39,838 ERROR Recursion limit reached
+2015-10-13 14:55:38,703 DEBUG Logging for validate.py
+
+2015-10-13 14:55:38,703 INFO STARTED - validate.py
+2015-10-13 14:55:38,704 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:55:38,704 INFO Number of cols: 4
+2015-10-13 14:55:38,704 INFO Reading csv file
+2015-10-13 14:55:38,704 INFO Implementing testerFixer
+2015-10-13 14:55:38,704 INFO Validating quotes
+2015-10-13 14:55:38,705 INFO PASSED - Quotes validated successfully
+2015-10-13 14:55:38,710 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:55:38,711 INFO Validating new line characters
+2015-10-13 14:55:38,712 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:55:38,712 INFO Validating new line characters
+2015-10-13 14:55:38,713 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:55:38,714 INFO Validating quotes
+2015-10-13 14:55:38,715 INFO PASSED - Quotes validated successfully
+2015-10-13 14:55:38,715 INFO CSV file returned successfully
+2015-10-13 14:55:38,715 INFO COMPLETED - validate.py
+
+2015-10-13 14:56:59,418 DEBUG Logging for validate.py
+
+2015-10-13 14:56:59,418 INFO STARTED - validate.py
+2015-10-13 14:56:59,418 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:56:59,418 INFO Number of cols: 4
+2015-10-13 14:56:59,418 INFO Reading csv file
+2015-10-13 14:56:59,418 INFO Implementing testerFixer
+2015-10-13 14:56:59,419 INFO Validating quotes
+2015-10-13 14:56:59,419 INFO PASSED - Quotes validated successfully
+2015-10-13 14:56:59,424 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:56:59,424 INFO Validating new line characters
+2015-10-13 14:56:59,425 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:56:59,425 INFO Validating new line characters
+2015-10-13 14:56:59,427 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:56:59,427 INFO Validating quotes
+2015-10-13 14:56:59,428 INFO PASSED - Quotes validated successfully
+2015-10-13 14:56:59,428 INFO CSV file returned successfully
+2015-10-13 14:56:59,428 INFO COMPLETED - validate.py
+
+2015-10-13 14:57:11,343 DEBUG Logging for validate.py
+
+2015-10-13 14:57:11,343 INFO STARTED - validate.py
+2015-10-13 14:57:11,344 INFO CSV file path: misc/example-data/countries-dbpedia.csv
+2015-10-13 14:57:11,344 INFO Number of cols: 4
+2015-10-13 14:57:11,344 INFO Reading csv file
+2015-10-13 14:57:11,344 INFO Implementing testerFixer
+2015-10-13 14:57:11,344 INFO Validating quotes
+2015-10-13 14:57:11,346 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:11,358 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:57:11,358 INFO Validating new line characters
+2015-10-13 14:57:11,361 WARNING FAILED - Missing newline characters in CSV file
+2015-10-13 14:57:11,361 INFO Fixing newline characters
+2015-10-13 14:57:11,365 INFO Implementing testerFixer
+2015-10-13 14:57:11,365 INFO Validating quotes
+2015-10-13 14:57:11,372 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:11,398 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:57:11,398 INFO Validating new line characters
+2015-10-13 14:57:11,404 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:11,404 INFO Validating new line characters
+2015-10-13 14:57:11,410 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:11,410 INFO Validating quotes
+2015-10-13 14:57:11,414 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:11,414 INFO CSV file returned successfully
+2015-10-13 14:57:11,414 INFO Validating new line characters
+2015-10-13 14:57:11,419 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:11,420 INFO Validating quotes
+2015-10-13 14:57:11,424 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:11,424 INFO CSV file returned successfully
+2015-10-13 14:57:11,424 INFO COMPLETED - validate.py
+
+2015-10-13 14:57:22,259 DEBUG Logging for validate.py
+
+2015-10-13 14:57:22,259 INFO STARTED - validate.py
+2015-10-13 14:57:22,259 INFO CSV file path: misc/example-data/countries-mondial.csv
+2015-10-13 14:57:22,260 INFO Number of cols: 4
+2015-10-13 14:57:22,260 INFO Reading csv file
+2015-10-13 14:57:22,260 INFO Implementing testerFixer
+2015-10-13 14:57:22,260 INFO Validating quotes
+2015-10-13 14:57:22,261 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:22,265 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:57:22,265 INFO Validating new line characters
+2015-10-13 14:57:22,266 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:22,266 INFO Validating new line characters
+2015-10-13 14:57:22,267 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:22,267 INFO Validating quotes
+2015-10-13 14:57:22,268 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:22,268 INFO CSV file returned successfully
+2015-10-13 14:57:22,268 INFO COMPLETED - validate.py
+
+2015-10-13 14:57:31,847 DEBUG Logging for validate.py
+
+2015-10-13 14:57:31,847 INFO STARTED - validate.py
+2015-10-13 14:57:31,847 INFO CSV file path: misc/example-data/countries-dbpedia.csv
+2015-10-13 14:57:31,847 INFO Number of cols: 4
+2015-10-13 14:57:31,847 INFO Reading csv file
+2015-10-13 14:57:31,847 INFO Implementing testerFixer
+2015-10-13 14:57:31,847 INFO Validating quotes
+2015-10-13 14:57:31,849 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:31,856 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:57:31,856 INFO Validating new line characters
+2015-10-13 14:57:31,858 WARNING FAILED - Missing newline characters in CSV file
+2015-10-13 14:57:31,858 INFO Fixing newline characters
+2015-10-13 14:57:31,861 INFO Implementing testerFixer
+2015-10-13 14:57:31,861 INFO Validating quotes
+2015-10-13 14:57:31,865 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:31,889 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:57:31,889 INFO Validating new line characters
+2015-10-13 14:57:31,895 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:31,895 INFO Validating new line characters
+2015-10-13 14:57:31,900 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:31,900 INFO Validating quotes
+2015-10-13 14:57:31,904 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:31,905 INFO CSV file returned successfully
+2015-10-13 14:57:31,905 INFO Validating new line characters
+2015-10-13 14:57:31,910 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:57:31,910 INFO Validating quotes
+2015-10-13 14:57:31,914 INFO PASSED - Quotes validated successfully
+2015-10-13 14:57:31,914 INFO CSV file returned successfully
+2015-10-13 14:57:31,914 INFO COMPLETED - validate.py
+
+2015-10-13 14:58:09,742 DEBUG Logging for validate.py
+
+2015-10-13 14:58:09,742 INFO STARTED - validate.py
+2015-10-13 14:58:09,742 INFO CSV file path: misc/example-data/countries-dbpedia.csv
+2015-10-13 14:58:09,742 INFO Number of cols: 4
+2015-10-13 14:58:09,742 INFO Reading csv file
+2015-10-13 14:58:09,743 INFO Implementing testerFixer
+2015-10-13 14:58:09,743 INFO Validating quotes
+2015-10-13 14:58:09,745 INFO PASSED - Quotes validated successfully
+2015-10-13 14:58:09,756 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:58:09,757 INFO Validating new line characters
+2015-10-13 14:58:09,759 WARNING FAILED - Missing newline characters in CSV file
+2015-10-13 14:58:09,759 INFO Fixing newline characters
+2015-10-13 14:58:09,764 INFO Implementing testerFixer
+2015-10-13 14:58:09,764 INFO Validating quotes
+2015-10-13 14:58:09,771 INFO PASSED - Quotes validated successfully
+2015-10-13 14:58:09,804 WARNING FAILED - Comma check in CSV file
+2015-10-13 14:58:09,804 INFO Validating new line characters
+2015-10-13 14:58:09,811 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:58:09,811 INFO Validating new line characters
+2015-10-13 14:58:09,817 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:58:09,818 INFO Validating quotes
+2015-10-13 14:58:09,823 INFO PASSED - Quotes validated successfully
+2015-10-13 14:58:09,823 INFO CSV file returned successfully
+2015-10-13 14:58:09,823 INFO Validating new line characters
+2015-10-13 14:58:09,829 INFO PASSED - Newline characters validated successfully
+2015-10-13 14:58:09,829 INFO Validating quotes
+2015-10-13 14:58:09,834 INFO PASSED - Quotes validated successfully
+2015-10-13 14:58:09,834 INFO CSV file returned successfully
+2015-10-13 14:58:09,834 INFO Writing csv file
+2015-10-13 14:58:09,834 INFO COMPLETED - validate.py
+

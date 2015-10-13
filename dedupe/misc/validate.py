@@ -88,11 +88,11 @@ def validateQuotes(read_data):
 
     if quote_count % int(args.cols) != 0:
         print("Unbalanced quote in CSV file")
-        logging.warning("Unbalanced quotes in CSV file")
+        logging.warning("FAILED - Unbalanced quotes in CSV file")
         return False
 
     else:
-        logging.info("Quotes validated successfully")
+        logging.info("PASSED - Quotes validated successfully")
         return True
 
 def validateNewline(read_data):
@@ -111,11 +111,39 @@ def validateNewline(read_data):
 
     if newline_count % int(args.cols) != 0:
         print("Missing newline characters")
-        logging.warning("Missing newline characters found in CSV file")
+        logging.warning("FAILED - Missing newline characters in CSV file")
         return False
     else:
-        logging.info("Newline characters validated successfully")
+        logging.info("PASSED - Newline characters validated successfully")
         return True
+
+def validateCommas(read_data):
+    """ Check to see if there's enough commas """
+    row_count = 0
+    for row in read_data.split("\n"):
+        row_count += 1
+        comma_count = 0
+
+        row = list(row)
+        while (len(row) - 2) >= 0:
+
+            last_two = row.pop() + row.pop()
+        
+            if last_two[::-1] == ',"':
+                comma_count += 1
+
+    if comma_count / (int(args.cols) - 1) != row_count:
+        print("Missing correct amount of commas")
+        logging.warning("FAILED - Comma check in CSV file")
+        return False
+
+    else:
+        print("Correct number of commas found")
+        logging.info("PASSED - comma check")
+        return True
+        
+        
+    
 
 def itemLenSanity(item):
     """ Check for 0 len """
@@ -179,6 +207,9 @@ def testerFixer(data):
         
     if not validateQuotes(data):
         print('validateQuotes failed')
+
+    if not validateCommas(data):
+        print('validateCommas failed')
         
     if not validateNewline(data):
         print ('validateNewline failed')
@@ -204,7 +235,7 @@ def main():
     write_data = testerFixer(read_data)
 
     # write to file
-    #write_csv(write_data)
+    write_csv(write_data)
 
     print("Test complete")
     logging.info("COMPLETED - validate.py\n")

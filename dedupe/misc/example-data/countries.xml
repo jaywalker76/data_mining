@@ -44,7 +44,7 @@
   
   <group>
     <csv>
-      <param name="input-file" value="countries-dbpedia.csv"/>
+      <param name="input-file" value="countries-dbpedia_valid.csv"/>
       <param name="header-line" value="false"/>
       
       <column name="1" property="ID"/>
