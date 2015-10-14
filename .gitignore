@@ -2,3 +2,4 @@
 *.pdf
 .Rhistory
 dedupe/target/*
+data/*
