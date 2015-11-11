@@ -65,7 +65,7 @@ def evaluateDuplicates(found_dupes, true_dupes):
 
 
 settings_file = 'canonical_learned_settings.json'
-raw_data = 'tests/datasets/restaurant-nophone-training.csv'
+raw_data = 'datasets/restaurant-nophone-training.csv'
 
 data_d, header = canonicalImport(raw_data)
 
