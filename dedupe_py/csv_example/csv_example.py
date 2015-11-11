@@ -46,10 +46,10 @@ logging.getLogger().setLevel(log_level)
 
 # ## Setup
 
-input_file = 'csv_example_messy_input.csv'
-output_file = 'csv_example_output.csv'
-settings_file = 'csv_example_learned_settings'
-training_file = 'csv_example_training.json'
+input_file = 'csv_example/csv_example_messy_input.csv'
+output_file = 'csv_example/csv_example_output.csv'
+settings_file = 'csv_example/csv_example_learned_settings'
+training_file = 'csv_example/csv_example_training.json'
 
 
 def preProcess(column):
