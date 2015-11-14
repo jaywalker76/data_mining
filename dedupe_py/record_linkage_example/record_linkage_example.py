@@ -51,7 +51,6 @@ def preProcess(column):
     Do a little bit of data cleaning with the help of Unidecode and Regex.
     Things like casing, extra spaces, quotes and new lines can be ignored.
     """
-
     column = unidecode(column)
     column = re.sub('\n', ' ', column)
     column = re.sub('-', '', column)
@@ -61,8 +60,8 @@ def preProcess(column):
     column = re.sub(":", ' ', column)
     column = re.sub('  +', ' ', column)
     column = column.strip().strip('"').strip("'").lower().strip()
-    if not column :
-        column = None
+    #if not column :
+    #    column = None # fix_2
     return column
 
 
@@ -81,6 +80,8 @@ def readData(filename):
             try :
                 clean_row['price'] = float(clean_row['price'][1:])
             except ValueError :
+                clean_row['price'] = 0
+            except TypeError: # fix_1
                 clean_row['price'] = 0
             data_d[filename + str(i)] = dict(clean_row)
 

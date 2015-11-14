@@ -8,14 +8,14 @@ def evaluateDuplicates(found_dupes, true_dupes):
     false_positives = found_dupes.difference(true_dupes)
     uncovered_dupes = true_dupes.difference(found_dupes)
 
-    print 'found duplicate'
-    print len(found_dupes)
+    print('found duplicate')
+    print(len(found_dupes))
 
-    print 'precision'
-    print 1 - len(false_positives) / float(len(found_dupes))
+    print('precision')
+    print(1 - len(false_positives) / float(len(found_dupes)))
 
-    print 'recall'
-    print len(true_positives) / float(len(true_dupes))
+    print('recall')
+    print(len(true_positives) / float(len(true_dupes)))
 
 
 def dupePairs(filename, rowname) :
