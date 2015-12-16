@@ -5,3 +5,4 @@ dedupe/target/*
 data/*
 *.ipynb_checkpoints/*
 *secret.py
+*csv
