@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import pandas as pd
+import numpy as np
 from nltk.metrics.distance import edit_distance
 from itertools import combinations
 import logging
@@ -91,6 +92,87 @@ def merge_clusters(cluster, clusters, item):
         clusters[cluster] = [item]
         
     return clusters
+
+def array_chunks(addy_list, chunk_size):
+    """ Break an array into chunks given the chunk size """
+    remainder = len(addy_list) % chunk_size
+    iterations = int(len(addy_list) / chunk_size)
+
+    if remainder != 0:
+        iterations += 1
+        
+    chunk_num = 0
+    chunks = {}
+    chunking = True
+    chunker = 0
+
+    while iterations > 0:
+
+        chunks[chunk_num] = addy_list[chunker:chunk_size]
+        chunk_num += 1
+        chunker += chunk_size
+
+        iterations -= 1
+        
+        if iterations == 1 and remainder != 0:
+            chunk_size += remainder
+
+        else:
+            chunk_size += chunk_size
+
+    return chunks
+
+def chunk_compare():
+    """ Compare chunks and recombine if necessary """
+    # do what was done in check_sim()
+
+    
+
+    
+    pass
+
+
+    
+
+def manage_array(addy_list, chunk_size):
+    """ We need a way to compare large arrays of strings
+
+    Most of the buckets contain a small number of strings
+    like 8. Other buckets contains something like 767. Since
+    we want to avoid comparing more than 50 items at a time 
+    (arbitrary but reasonable assumption) we're going to have
+    to figure out a way to break up the array so compared items
+    are more likely to be similar.
+
+    'Close enough' approach:
+
+        We're going to do a standard deviation comparison. Take the
+        similarity score of items within 50 item buckets. If the 
+        standard deviation of comparisons within that bucket is less
+        than 2, then hold out the string with a mean score.
+
+        Else if the standard deviation is greater than 2, recombine
+        the buckets into another group of 50. 
+
+        Else do no more than three iterations.
+
+    Returns:
+        dict, clusters where key is integer, value is list of 
+        corresponding addresses.
+    """
+    addy_size = len(addy_list)
+
+    # break into chunks
+    addy_list = addy_list.sort()
+    chunks = array_chunks(addy_list, chunk_size)
+
+    # compare & rechunk if necessary
+    
+
+    
+
+
+    
 
 
 def check_sim(addy_list, dist, cluster, clusters):
