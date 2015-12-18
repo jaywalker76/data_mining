@@ -6,3 +6,6 @@ data/*
 *.ipynb_checkpoints/*
 *secret.py
 *csv
+*log
+*zip
+networks/taggers/*
