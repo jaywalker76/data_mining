@@ -1,13 +1,148 @@
 ########################################################################
-## SPARQL queries for city names
+## SPARQL queries for city names within a specific country
 ##
 ## Tyler Brown <tylers.pile@gmail.com>
 ########################################################################
 
+# prefixes to be included with each query
 PREFIX dbpedia-owl: <http://dbpedia.org/ontology/> 
 
+# Get all cities names in each country
 SELECT DISTINCT ?city ?country 
 WHERE { ?city rdf:type dbpedia-owl:City ; 
               rdfs:label ?label ; 
               dbpedia-owl:country ?country 
 }
+
+# Get all city names for each country
+SELECT DISTINCT ?city ?country 
+WHERE { ?city rdf:type dbpedia-owl:City ; 
+              rdfs:label ?label ; 
+              dbpedia-owl:country ?country 
+}
+
+# Get all city names for a specific country (1)
+#
+#  This query works but it only brings back 6 cities for Turkey
+#  which can't be right.
+SELECT DISTINCT ?city ?country 
+WHERE { ?city rdf:type dbpedia-owl:City ; 
+              rdfs:label ?label ; 
+              dbpedia-owl:country ?country 
+FILTER (regex(?country, "Turkey"))
+}
+
+# Getting all cities and towns (https://gist.github.com/cv711/5875299)
+SELECT DISTINCT *
+WHERE {
+   {
+    ?city rdf:type dbpedia-owl:Town;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+    FILTER ( lang(?label) = 'en' and ?pop>10000)
+   }
+   UNION
+   {
+     ?city rdf:type dbpedia-owl:City;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+     FILTER ( lang(?label) = 'en' and ?pop>10000)
+   }
+}
+
+# For a specific country; Turkey
+#
+# We're now up from 6 to 14
+SELECT DISTINCT *
+WHERE {
+   {
+    ?city rdf:type dbpedia-owl:Town;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+    FILTER ( lang(?label) = 'en' and ?pop>10000 and regex(?country, "Turkey"))
+   }
+   UNION
+   {
+     ?city rdf:type dbpedia-owl:City;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+     FILTER ( lang(?label) = 'en' and ?pop>10000 and regex(?country, "Turkey"))
+   }
+}
+
+# For a specific country; Turkey
+#
+# removing the population requirement returns 120 cities and towns
+SELECT DISTINCT *
+WHERE {
+   {
+    ?city rdf:type dbpedia-owl:Town;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+    FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
+   }
+   UNION
+   {
+     ?city rdf:type dbpedia-owl:City;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+     FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
+   }
+}
+
+# For a specific country; Turkey
+#
+# removing the population and english language requirement
+# returns 179 cities and town but 120 unique resource are 
+# returned. We don't gain any additional resources by removing
+# the language requirement.
+SELECT DISTINCT *
+WHERE {
+   {
+    ?city rdf:type dbpedia-owl:Town;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+    FILTER ( regex(?country, "Turkey") )
+   }
+   UNION
+   {
+     ?city rdf:type dbpedia-owl:City;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+     FILTER ( regex(?country, "Turkey") )
+   }
+}
+
+###################################################################
+### Best query for all cities and towns in a country
+###################################################################
+SELECT DISTINCT *
+WHERE {
+   {
+    ?city rdf:type dbpedia-owl:Town;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+    FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
+   }
+   UNION
+   {
+     ?city rdf:type dbpedia-owl:City;
+         rdfs:label ?label ;
+         dbpedia-owl:country ?country ;
+         dbpedia-owl:populationTotal ?pop .
+     FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
+   }
+}
+
+
+
+
