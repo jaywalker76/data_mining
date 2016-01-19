@@ -1,0 +1,13 @@
+########################################################################
+## SPARQL queries for city names
+##
+## Tyler Brown <tylers.pile@gmail.com>
+########################################################################
+
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/> 
+
+SELECT DISTINCT ?city ?country 
+WHERE { ?city rdf:type dbpedia-owl:City ; 
+              rdfs:label ?label ; 
+              dbpedia-owl:country ?country 
+}
