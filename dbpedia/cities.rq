@@ -5,7 +5,8 @@
 ########################################################################
 
 # prefixes to be included with each query
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/> 
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 
 # Get all cities names in each country
 SELECT DISTINCT ?city ?country 
@@ -121,15 +122,18 @@ WHERE {
    }
 }
 
-###################################################################
-### Best query for all cities and towns in a country
-###################################################################
+# For a specific country; Turkey
+#
+# Adding coordinates to query with english language requirement.
+# Fields: city, label, country, lat, long, pop
 SELECT DISTINCT *
 WHERE {
    {
     ?city rdf:type dbpedia-owl:Town;
          rdfs:label ?label ;
          dbpedia-owl:country ?country ;
+         geo:lat ?lat ;
+         geo:long ?long;
          dbpedia-owl:populationTotal ?pop .
     FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
    }
@@ -138,6 +142,8 @@ WHERE {
      ?city rdf:type dbpedia-owl:City;
          rdfs:label ?label ;
          dbpedia-owl:country ?country ;
+         geo:lat ?lat ;
+         geo:long ?long;
          dbpedia-owl:populationTotal ?pop .
      FILTER ( lang(?label) = 'en' and regex(?country, "Turkey"))
    }
